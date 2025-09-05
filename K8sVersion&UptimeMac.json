@@ -831,6 +831,10 @@
       "type": "gauge"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -897,8 +901,10 @@
             "type": "prometheus",
             "uid": "Prometheus"
           },
+          "editorMode": "code",
           "expr": "up{job=\"node-exporter\"}",
           "legendFormat": "{{instance}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -918,8 +924,8 @@
     "list": [
       {
         "current": {
-          "text": "CD-CA-MAC-0016",
-          "value": "CD-CA-MAC-0016"
+          "text": "192.168.13.118:9100",
+          "value": "192.168.13.118:9100"
         },
         "datasource": {
           "type": "prometheus",
@@ -937,12 +943,12 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "K8sVersion&UptimeMac",
   "uid": "cluster-system-overview",
-  "version": 32
+  "version": 2
 }
