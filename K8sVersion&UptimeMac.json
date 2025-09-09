@@ -940,7 +940,7 @@
             "uid": "Prometheus"
           },
           "editorMode": "code",
-          "expr": "count by (job) (up{job=\"mac-mini-nodes\"} == 0)\n",
+          "expr": "sum(up{job=\"mac-mini-nodes\"} == 0)\n",
           "range": true,
           "refId": "A"
         }
@@ -1871,7 +1871,23 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [],
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "DOWN"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "UP"
+                }
+              },
+              "type": "value"
+            }
+          ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1895,35 +1911,36 @@
         "y": 20
       },
       "id": 10,
+      "maxPerRow": 2,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
-        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
           ],
           "fields": "",
-          "values": false
+          "limit": 1,
+          "values": true
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
       "pluginVersion": "12.1.0",
+      "repeatDirection": "h",
       "targets": [
         {
           "editorMode": "code",
-          "expr": "up{job=\"blackbox\"}",
+          "expr": "probe_success{job=\"amazon\"}\n",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
         }
       ],
       "title": "Blackbox Exporter Status",
-      "type": "stat"
+      "type": "gauge"
     },
     {
       "datasource": {
@@ -2284,7 +2301,32 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "CD-CA-MAC-0003"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 5,
@@ -2314,7 +2356,7 @@
             "uid": "Prometheus"
           },
           "editorMode": "code",
-          "expr": "up{job=\"mac-mini-nodes\", instance=~\"$instance\"}\n",
+          "expr": "up{job=\"mac-mini-nodes\"}\n",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -2400,8 +2442,8 @@
     "list": [
       {
         "current": {
-          "text": "CD-CA-MAC-0006",
-          "value": "CD-CA-MAC-0006"
+          "text": "CD-CA-MAC-0016",
+          "value": "CD-CA-MAC-0016"
         },
         "datasource": {
           "type": "prometheus",
@@ -2419,12 +2461,12 @@
     ]
   },
   "time": {
-    "from": "now/w",
-    "to": "now/w"
+    "from": "now-12h",
+    "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "K8sVersion&UptimeMac",
   "uid": "cluster-system-overview",
-  "version": 44
+  "version": 52
 }
