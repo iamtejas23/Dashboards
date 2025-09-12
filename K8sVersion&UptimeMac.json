@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 8,
+  "id": 13,
   "links": [],
   "panels": [
     {
@@ -1906,7 +1906,7 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 6,
+        "w": 8,
         "x": 0,
         "y": 20
       },
@@ -1929,7 +1929,6 @@
         "sizing": "auto"
       },
       "pluginVersion": "12.1.0",
-      "repeatDirection": "h",
       "targets": [
         {
           "editorMode": "code",
@@ -1985,8 +1984,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 6,
-        "x": 6,
+        "w": 8,
+        "x": 8,
         "y": 20
       },
       "id": 3,
@@ -2051,8 +2050,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 6,
-        "x": 12,
+        "w": 8,
+        "x": 16,
         "y": 20
       },
       "id": 15,
@@ -2067,7 +2066,8 @@
             "lastNotNull"
           ],
           "fields": "",
-          "values": false
+          "limit": 1,
+          "values": true
         },
         "showPercentChange": false,
         "textMode": "name",
@@ -2084,72 +2084,6 @@
         }
       ],
       "title": "Alertmanager Version",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "string"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 18,
-        "y": 20
-      },
-      "id": 2,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "/.*/",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "Prometheus"
-          },
-          "editorMode": "code",
-          "expr": "calico_build_info",
-          "legendFormat": "{{version}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Calico Version",
       "type": "stat"
     },
     {
@@ -2461,12 +2395,12 @@
     ]
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "K8sVersion&UptimeMac",
   "uid": "cluster-system-overview",
-  "version": 52
+  "version": 3
 }
