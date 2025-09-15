@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 13,
+  "id": 11,
   "links": [],
   "panels": [
     {
@@ -940,7 +940,7 @@
             "uid": "Prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(up{job=\"mac-mini-nodes\"} == 0)\n",
+          "expr": "sum(up{job=\"mac-mini-nodes\"} == 0) or vector(0)\n",
           "range": true,
           "refId": "A"
         }
@@ -2402,5 +2402,5 @@
   "timezone": "browser",
   "title": "K8sVersion&UptimeMac",
   "uid": "cluster-system-overview",
-  "version": 3
+  "version": 2
 }
