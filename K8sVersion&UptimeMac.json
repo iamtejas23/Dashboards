@@ -81,7 +81,7 @@
             "uid": "Prometheus"
           },
           "editorMode": "code",
-          "expr": "count by (up) (up{job=\"mac-mini-nodes\"})",
+          "expr": "count(up{job=\"mac-mini-nodes\"}) - count(up{job=\"mac-mini-nodes\"} == 0)\n",
           "range": true,
           "refId": "A"
         }
@@ -940,7 +940,7 @@
             "uid": "Prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(up{job=\"mac-mini-nodes\"} == 0) or vector(0)\n",
+          "expr": "count(up{job=\"mac-mini-nodes\"}) - count(up{job=\"mac-mini-nodes\"} == 1)\n",
           "range": true,
           "refId": "A"
         }
@@ -1790,7 +1790,7 @@
           "refId": "A"
         }
       ],
-      "title": "MySQ Version",
+      "title": "MySQL Version",
       "type": "stat"
     },
     {
@@ -2165,7 +2165,6 @@
     },
     {
       "datasource": {
-        "type": "prometheus",
         "uid": "prometheus"
       },
       "fieldConfig": {
@@ -2211,10 +2210,12 @@
               "options": {
                 "0": {
                   "color": "red",
+                  "index": 0,
                   "text": "DOWN"
                 },
                 "1": {
                   "color": "green",
+                  "index": 1,
                   "text": "UP"
                 }
               },
@@ -2243,7 +2244,7 @@
               "options": {
                 "mode": "exclude",
                 "names": [
-                  "CD-CA-MAC-0003"
+                  "up{instance=\"CD-CA-MAC-0022\", job=\"mac-mini-nodes\"}"
                 ],
                 "prefix": "All except:",
                 "readOnly": true
@@ -2285,13 +2286,9 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "Prometheus"
-          },
           "editorMode": "code",
           "expr": "up{job=\"mac-mini-nodes\"}\n",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "",
           "range": true,
           "refId": "A"
         }
@@ -2376,8 +2373,8 @@
     "list": [
       {
         "current": {
-          "text": "CD-CA-MAC-0016",
-          "value": "CD-CA-MAC-0016"
+          "text": "CD-CA-MAC-0004",
+          "value": "CD-CA-MAC-0004"
         },
         "datasource": {
           "type": "prometheus",
@@ -2402,5 +2399,5 @@
   "timezone": "browser",
   "title": "K8sVersion&UptimeMac",
   "uid": "cluster-system-overview",
-  "version": 2
+  "version": 9
 }
