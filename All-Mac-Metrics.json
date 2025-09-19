@@ -1,4 +1,11 @@
 {
+  
+  "uid": "all-mac-metrics",
+  "title": "All Mac Metrics",
+  "folderUid": "mac-all", 
+  "overwrite": true,
+
+  
   "annotations": {
     "list": [
       {
